@@ -19,8 +19,8 @@
             Les Private yang Personal dan Profesional!
         </p>
         <div class="flex justify-center mt-10">
-            <button class="bg-[#FFC007] w-56 h-16 rounded-lg">
-                <span class="text-[#45069A] font-bold text-3xl">MULAI</span>
+            <button class="bg-[#FFC007] w-56 h-16 rounded-lg" >
+                <a href="/choose" class="text-[#45069A] font-bold text-3xl">MULAI</a>
             </button>
         </div>
     </div>
