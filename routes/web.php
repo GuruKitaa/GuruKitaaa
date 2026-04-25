@@ -2,8 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GuruController;
-
-
+use App\Http\Controllers\SiswaController;
 
 // Tambahkan ini
 Route::get('/gurus', [GuruController::class, 'index']);
@@ -13,3 +12,5 @@ Route::get('/', function () {
 Route::get('/choose', function() {
     return view('Landing.choose');
 });
+
+Route::get('/login-siswa', [SiswaController::class, 'index']);
