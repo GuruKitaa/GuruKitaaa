@@ -15,3 +15,4 @@ Route::get('/choose', function() {
 
 Route::get('/login-siswa', [SiswaController::class, 'index']);
 Route::get('/register-siswa', [SiswaController::class, 'register']);
+Route::get('/login-guru', [GuruController::class, 'index']);
