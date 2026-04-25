@@ -15,6 +15,11 @@ class SiswaController extends Controller
         return view('Auth.AuthSiswa.LoginSiswa');
     }
 
+    public function register()
+    {
+        return view('Auth.AuthSiswa.RegisterSiswa');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
