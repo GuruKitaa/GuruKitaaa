@@ -11,4 +11,8 @@ class GuruController extends Controller
     {
        return view('Auth.AuthGuru.LoginGuru');
     }
+
+    public function register(){
+        return view('Auth.AuthGuru.Register');
+    }
 }

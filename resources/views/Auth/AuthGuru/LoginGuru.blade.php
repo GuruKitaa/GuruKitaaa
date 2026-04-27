@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div>
-                        <p class="text-center text-white">BELUM PUNYA AKUN? <a href="/register-siswa" class="">SIGNUP!</a></p>
+                        <p class="text-center text-white">BELUM PUNYA AKUN? <a href="/register-guru" class="">SIGNUP!</a></p>
                     </div>
                 </div>
 

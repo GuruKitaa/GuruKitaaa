@@ -31,7 +31,7 @@
                         class="bg-[#FFC007] w-[472px] h-[68px] rounded-2xl text-[#45069A] font-bold text-2xl">SIGN UP</button>
 
                     <div>
-                        <p class="text-center text-white">BELUM PUNYA AKUN? <a href="/login-siswa" class="">SIGN IN!</a></p>
+                        <p class="text-center text-white">BELUM PUNYA AKUN? <a href="/login-guru" class="">SIGN IN!</a></p>
                     </div>
                 </div>
 
