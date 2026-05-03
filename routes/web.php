@@ -20,3 +20,7 @@ Route::get('/register-guru', [GuruController::class, 'register']);
 Route::get('/guru', function() {
     return view('Landing.landingGuru');
 });
+
+Route::get('/siswa', function() {
+    return view('Landing.landingSiswa');
+});
