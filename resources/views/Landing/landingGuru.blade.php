@@ -405,6 +405,7 @@
             </div>
 
         </div>
+        @include('layouts.footer.footer')
     </div>
 </body>
 </html>

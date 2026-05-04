@@ -224,8 +224,8 @@
                   <img src="{{ asset('images/wawasan.png') }}" alt="Wawasan & Artikel" class="w-full h-full object-contain drop-shadow-lg">
               </div>
           </div>
-
       </div>
-
+    
+      @include('layouts.footer.footer')
 </body>
 </html>
