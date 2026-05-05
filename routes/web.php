@@ -30,6 +30,10 @@ Route::get('/cari-guru', function () {
     return view('Landing.landingSiswaCariGuru');
 });
 
+Route::get('/booking-les', function () {
+    return view('Landing.bookingLes');
+});
+
 Route::get('/login-siswa        ', [SiswaController::class, 'index']);
 Route::get('/register-siswa', [SiswaController::class, 'register']);
 Route::get('/login-guru', [GuruController::class, 'index']);
