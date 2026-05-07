@@ -34,6 +34,14 @@ Route::get('/booking-les', function () {
     return view('Landing.bookingLes');
 });
 
+Route::get('/checkout-pembayaran', function () {
+    return view('Landing.checkoutPembayaran');
+});
+
+Route::get('/selesai-pembayaran', function () {
+    return view('Landing.selesaiPembayaran');
+});
+
 Route::get('/login-siswa        ', [SiswaController::class, 'index']);
 Route::get('/register-siswa', [SiswaController::class, 'register']);
 Route::get('/login-guru', [GuruController::class, 'index']);
