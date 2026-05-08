@@ -74,6 +74,10 @@ Route::get('/detail-pelatihan', function () {
     return view('Landing.detailPelatihan');
 });
 
+Route::get('/chat', function () {
+    return view('Landing.chat');
+});
+
 Route::get('/login-siswa        ', [SiswaController::class, 'index']);
 Route::get('/register-siswa', [SiswaController::class, 'register']);
 Route::get('/login-guru', [GuruController::class, 'index']);
