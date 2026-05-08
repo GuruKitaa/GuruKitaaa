@@ -22,13 +22,13 @@ Route::get('/siswa', function() {
     return view('Landing.landingSiswa');
 });
 
-Route::get('/detail-guru', function () {
-    return view('Landing.landingdetailGuru');
-});
+// Route::get('/detail-guru', function () {
+//     return view('Landing.landingdetailGuru');
+// });
 
-Route::get('/cari-guru', function () {
-    return view('Landing.landingSiswaCariGuru');
-});
+// Route::get('/cari-guru', function () {
+//     return view('Landing.landingSiswaCariGuru');
+// });
 
 Route::get('/booking-les', function () {
     return view('Landing.bookingLes');
@@ -78,7 +78,35 @@ Route::get('/chat', function () {
     return view('Landing.chat');
 });
 
-Route::get('/login-siswa        ', [SiswaController::class, 'index']);
+
+// ==============================
+// LOGIN SISWA
+// ==============================
+Route::get('/login-siswa', [SiswaController::class, 'index']);
+Route::post('/login-siswa', [SiswaController::class, 'login']);
+
+// ==============================
+// REGISTER SISWA
+// ==============================
 Route::get('/register-siswa', [SiswaController::class, 'register']);
+Route::post('/register-siswa', [SiswaController::class, 'store']);
+
+// ==============================
+// LOGIN GURU
+// ==============================
 Route::get('/login-guru', [GuruController::class, 'index']);
+Route::post('/login-guru', [GuruController::class, 'login']);
+
+// ==============================
+// REGISTER GURU
+// ==============================
 Route::get('/register-guru', [GuruController::class, 'register']);
+Route::post('/register-guru', [GuruController::class, 'store']);
+
+Route::get('/cari-guru', [GuruController::class, 'cariGuru']);
+
+// Landing detail-guru Dynamic
+Route::get(
+    '/detail-guru/{id}',
+    [GuruController::class, 'detailGuru']
+);

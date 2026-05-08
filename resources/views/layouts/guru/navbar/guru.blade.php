@@ -14,7 +14,7 @@
                     Beranda
                     <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#6B21A8] transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="#" class="text-[#2D2D2D] hover:text-[#6B21A8] font-semibold text-sm transition-all duration-300 relative group">
+                <a href="/cari-guru" class="text-[#2D2D2D] hover:text-[#6B21A8] font-semibold text-sm transition-all duration-300 relative group">
                     Cari Guru
                     <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#6B21A8] transition-all duration-300 group-hover:w-full"></span>
                 </a>
