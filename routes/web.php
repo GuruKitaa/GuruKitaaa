@@ -58,6 +58,14 @@ Route::get('/detail-artikel', function () {
     return view('Landing.detailArtikel');
 });
 
+Route::get('/lomba', function () {
+    return view('Landing.lomba');
+});
+
+Route::get('/detail-lomba', function () {
+    return view('Landing.detailLomba');
+});
+
 Route::get('/login-siswa        ', [SiswaController::class, 'index']);
 Route::get('/register-siswa', [SiswaController::class, 'register']);
 Route::get('/login-guru', [GuruController::class, 'index']);

@@ -22,7 +22,7 @@
                     Pelatihan
                     <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#6B21A8] transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="#" class="text-[#2D2D2D] hover:text-[#6B21A8] font-semibold text-sm transition-all duration-300 relative group">
+                <a href="/lomba" class="text-[#2D2D2D] hover:text-[#6B21A8] font-semibold text-sm transition-all duration-300 relative group">
                     Info Lomba
                     <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#6B21A8] transition-all duration-300 group-hover:w-full"></span>
                 </a>
@@ -81,7 +81,7 @@
             <a href="/" class="block px-3 py-2.5 text-sm font-semibold text-gray-700 hover:text-[#6B21A8] hover:bg-purple-50 rounded-lg transition-colors">Beranda</a>
             <a href="#" class="block px-3 py-2.5 text-sm font-semibold text-gray-700 hover:text-[#6B21A8] hover:bg-purple-50 rounded-lg transition-colors">Cari Guru</a>
             <a href="#" class="block px-3 py-2.5 text-sm font-semibold text-gray-700 hover:text-[#6B21A8] hover:bg-purple-50 rounded-lg transition-colors">Pelatihan</a>
-            <a href="#" class="block px-3 py-2.5 text-sm font-semibold text-gray-700 hover:text-[#6B21A8] hover:bg-purple-50 rounded-lg transition-colors">Info Lomba</a>
+            <a href="/lomba" class="block px-3 py-2.5 text-sm font-semibold text-gray-700 hover:text-[#6B21A8] hover:bg-purple-50 rounded-lg transition-colors">Info Lomba</a>
             <a href="/artikel" class="block px-3 py-2.5 text-sm font-semibold text-gray-700 hover:text-[#6B21A8] hover:bg-purple-50 rounded-lg transition-colors">Artikel</a>
             <div class="border-t border-gray-100 pt-3 mt-2">
                 <div class="flex items-center px-3 py-2">
