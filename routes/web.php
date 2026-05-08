@@ -66,6 +66,14 @@ Route::get('/detail-lomba', function () {
     return view('Landing.detailLomba');
 });
 
+Route::get('/pelatihan', function () {
+    return view('Landing.pelatihan');
+});
+
+Route::get('/detail-pelatihan', function () {
+    return view('Landing.detailPelatihan');
+});
+
 Route::get('/login-siswa        ', [SiswaController::class, 'index']);
 Route::get('/register-siswa', [SiswaController::class, 'register']);
 Route::get('/login-guru', [GuruController::class, 'index']);
