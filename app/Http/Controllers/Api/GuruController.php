@@ -17,4 +17,26 @@ class GuruController extends Controller
             'data' => $gurus
         ]);
     }
+
+    public function show($id)
+    {
+        $guru = Guru::with('user')->find($id);
+
+        // JIKA TIDAK ADA
+        if (!$guru) {
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Guru tidak ditemukan'
+            ], 404);
+
+        }
+
+        // JIKA ADA
+        return response()->json([
+            'success' => true,
+            'message' => 'Detail guru berhasil diambil',
+            'data' => $guru
+        ]);
+    }
 }
