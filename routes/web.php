@@ -110,3 +110,17 @@ Route::get(
     '/detail-guru/{id}',
     [GuruController::class, 'detailGuru']
 );
+
+// MiddleWare
+Route::get('/dashboard-guru', function () {
+
+    return view('Landing.landingGuru');
+
+})->middleware('role:guru');
+
+
+Route::get('/dashboard-siswa', function () {
+
+    return view('Landing.landingSiswa');
+
+})->middleware('role:siswa');

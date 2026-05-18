@@ -95,28 +95,53 @@ class SiswaController extends Controller
             'password' => 'required',
         ]);
 
-        // DATA LOGIN
-        $credentials = [
-            'email' => strtolower($request->email),
-            'password' => $request->password,
-        ];
+        // CARI USER BERDASARKAN EMAIL
+        $user = User::where(
+            'email',
+            strtolower($request->email)
+        )->first();
 
-        // LOGIN
-        if (Auth::attempt($credentials)) {
+        // JIKA EMAIL TIDAK ADA
+        if (!$user) {
 
-            // REGENERATE SESSION
-            $request->session()->regenerate();
+            return back()
+                ->withErrors([
+                    'email' => 'Email tidak ditemukan',
+                ])
+                ->withInput();
 
-            // REDIRECT
-            return redirect('/cari-guru');
         }
 
-        // LOGIN GAGAL
-        return back()
-            ->withErrors([
-                'email' => 'Email atau password salah',
-            ])
-            ->withInput();
+        // CEK PASSWORD
+        if (!Hash::check($request->password, $user->password)) {
+
+            return back()
+                ->withErrors([
+                    'email' => 'Password salah',
+                ])
+                ->withInput();
+
+        }
+
+        // CEK ROLE
+        if ($user->role != 'siswa') {
+
+            return back()
+                ->withErrors([
+                    'email' => 'Role tidak sesuai, silakan login sebagai guru',
+                ])
+                ->withInput();
+
+        }
+
+        // LOGINKAN USER
+        Auth::login($user);
+
+        // REGENERATE SESSION
+        $request->session()->regenerate();
+
+        // REDIRECT
+        return redirect('/dashboard-siswa');
     }
 
     // =====================================================
