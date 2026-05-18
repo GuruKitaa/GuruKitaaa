@@ -20,20 +20,30 @@
                     <img src="{{ asset('images/Student.png') }}" alt="" class="w-[800px] h-[800px] ">
                 </div>
 
-                <div class="flex flex-col gap-10">
-                    <h1 class="text-white font-bold text-4xl mt-5 text-center">SIGN UP</h1>
-                    <input type="text" placeholder="MASUKAN EMAIL / NOMOR TELEPON"
-                        class="bg-white text-black w-[472px] h-[68px] rounded-2xl px-10">
-                    <input type="password" placeholder="MASUKAN KATA SANDI"class="bg-white text-black w-[472px] h-[68px] rounded-2xl px-10">
-                    <input type="password" placeholder="MASUKAN KATA SANDI KEMBALI"class="bg-white text-black w-[472px] h-[68px] rounded-2xl px-10">
+                <form action="{{ route('register.siswa') }}" method="POST" class="flex flex-col gap-6 w-full pr-10">
+                    @csrf
+                    <h1 class="text-white font-bold text-4xl mt-5 text-center w-[472px]">SIGN UP SISWA</h1>
+                    
+                    @if($errors->any())
+                        <div class="bg-red-500 text-white p-3 rounded-xl w-[472px] text-center">
+                            {{ $errors->first() }}
+                        </div>
+                    @endif
 
-                    <button
-                        class="bg-[#FFC007] w-[472px] h-[68px] rounded-2xl text-[#45069A] font-bold text-2xl">SIGN UP</button>
+                    <input type="text" name="name" placeholder="MASUKAN NAMA LENGKAP" required
+                        class="bg-white text-black w-[472px] h-[68px] rounded-2xl px-10">
+                    <input type="email" name="email" placeholder="MASUKAN EMAIL" required
+                        class="bg-white text-black w-[472px] h-[68px] rounded-2xl px-10">
+                    <input type="password" name="password" placeholder="MASUKAN KATA SANDI" required
+                        class="bg-white text-black w-[472px] h-[68px] rounded-2xl px-10">
+
+                    <button type="submit"
+                        class="bg-[#FFC007] w-[472px] h-[68px] rounded-2xl text-[#45069A] font-bold text-2xl mt-2">SIGN UP</button>
 
                     <div>
-                        <p class="text-center text-white">BELUM PUNYA AKUN? <a href="/login-siswa" class="">SIGN IN!</a></p>
+                        <p class="text-center text-white w-[472px]">SUDAH PUNYA AKUN? <a href="/login-siswa" class="font-bold underline">SIGN IN!</a></p>
                     </div>
-                </div>
+                </form>
 
 
             </div>

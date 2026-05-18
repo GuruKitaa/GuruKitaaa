@@ -3,6 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\AuthController;
+
+// Authentication Routes
+Route::post('/login', [AuthController::class, 'loginProcess'])->name('login');
+Route::post('/register/siswa', [AuthController::class, 'registerSiswaProcess'])->name('register.siswa');
+Route::post('/register/guru', [AuthController::class, 'registerGuruProcess'])->name('register.guru');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Tambahkan ini
 Route::get('/gurus', [GuruController::class, 'index']);

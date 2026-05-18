@@ -49,10 +49,19 @@
                 </button>
 
                 <!-- User Profile -->
+                @auth
                 <div class="flex items-center space-x-2 bg-gray-100 rounded-full pl-1 pr-4 py-1 cursor-pointer hover:bg-gray-200 transition-all duration-200">
-                    <img src="https://ui-avatars.com/api/?name=Raisha+S&background=333&color=fff" class="w-9 h-9 rounded-full shadow-sm">
-                    <span class="text-sm font-semibold text-[#2D2D2D]">Raisha S.</span>
+                    <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=333&color=fff" class="w-9 h-9 rounded-full shadow-sm">
+                    <span class="text-sm font-semibold text-[#2D2D2D]">{{ Auth::user()->name }}</span>
                 </div>
+                <form action="{{ route('logout') }}" method="POST" class="inline ml-2">
+                    @csrf
+                    <button type="submit" class="text-xs font-bold text-red-500 hover:text-red-700">LOGOUT</button>
+                </form>
+                @else
+                <a href="/login-siswa" class="text-sm font-semibold text-[#2D2D2D] hover:text-[#6B21A8]">Login</a>
+                <a href="/register-siswa" class="text-sm font-semibold text-white bg-[#6B21A8] px-4 py-2 rounded-full hover:bg-purple-800 transition-all">Daftar</a>
+                @endauth
             </div>
 
             <!-- Mobile Menu Button -->
@@ -84,12 +93,24 @@
             <a href="/lomba" class="block px-3 py-2.5 text-sm font-semibold text-gray-700 hover:text-[#6B21A8] hover:bg-purple-50 rounded-lg transition-colors">Info Lomba</a>
             <a href="/artikel" class="block px-3 py-2.5 text-sm font-semibold text-gray-700 hover:text-[#6B21A8] hover:bg-purple-50 rounded-lg transition-colors">Artikel</a>
             <div class="border-t border-gray-100 pt-3 mt-2">
-                <div class="flex items-center px-3 py-2">
-                    <div class="w-9 h-9 rounded-full bg-gradient-to-br from-[#7C3AED] to-[#A855F7] flex items-center justify-center text-white font-bold text-xs shadow-md">
-                        RA
+                @auth
+                <div class="flex items-center justify-between px-3 py-2">
+                    <div class="flex items-center">
+                        <div class="w-9 h-9 rounded-full bg-gradient-to-br from-[#7C3AED] to-[#A855F7] flex items-center justify-center text-white font-bold text-xs shadow-md uppercase">
+                            {{ substr(Auth::user()->name, 0, 2) }}
+                        </div>
+                        <span class="ml-3 text-sm font-semibold text-[#2D2D2D]">{{ Auth::user()->name }}</span>
                     </div>
-                    <span class="ml-3 text-sm font-semibold text-[#2D2D2D]">Raisha S.</span>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="text-xs font-bold text-red-500">LOGOUT</button>
+                    </form>
                 </div>
+                @else
+                <div class="px-3 py-2">
+                    <a href="/login-siswa" class="block text-center text-sm font-semibold text-white bg-[#6B21A8] px-4 py-2 rounded-lg">Login / Daftar</a>
+                </div>
+                @endauth
             </div>
         </div>
     </div>

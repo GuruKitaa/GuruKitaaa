@@ -20,28 +20,38 @@
                     <img src="{{ asset('images/Student.png') }}" alt="" class="w-[800px] h-[800px] ">
                 </div>
 
-                <div class="flex flex-col gap-10">
-                    <h1 class="text-white font-bold text-4xl mt-5 text-center">LOGIN</h1>
-                    <input type="text" placeholder="MASUKAN EMAIL / NOMOR TELEPON"
+                <form action="{{ route('login') }}" method="POST" class="flex flex-col gap-8 w-full pr-10">
+                    @csrf
+                    <h1 class="text-white font-bold text-4xl mt-5 text-center w-[472px]">LOGIN SISWA</h1>
+                    
+                    @if($errors->any())
+                        <div class="bg-red-500 text-white p-3 rounded-xl w-[472px] text-center">
+                            {{ $errors->first() }}
+                        </div>
+                    @endif
+
+                    <input type="email" name="email" placeholder="MASUKAN EMAIL" required
                         class="bg-white text-black w-[472px] h-[68px] rounded-2xl px-10">
-                    <input type="password" placeholder="MASUKAN KATA SANDI"
+                    <input type="password" name="password" placeholder="MASUKAN KATA SANDI" required
                         class="bg-white text-black w-[472px] h-[68px] rounded-2xl px-10">
 
-                    <button
+                    <button type="submit"
                         class="bg-[#FFC007] w-[472px] h-[68px] rounded-2xl text-[#45069A] font-bold text-2xl">LOGIN</button>
-                    <div class="flex justify-between">
+                    
+                    <div class="flex justify-between w-[472px]">
                         <div class="flex flex-row gap-3 items-center">
-                            <h1 class="text-white font-semibold text-2xl">Ingat Saya</h1>
-                            <input type="checkbox" class="w-5 h-5 rounded-full bg-white border-none">
+                            <input type="checkbox" name="remember" id="remember" class="w-5 h-5 rounded-full bg-white border-none">
+                            <label for="remember" class="text-white font-semibold text-xl">Ingat Saya</label>
                         </div>
                         <div>
-                            <h1 class="text-white">LUPA PASSWORD?</h1>
+                            <a href="#" class="text-white hover:underline">LUPA PASSWORD?</a>
                         </div>
                     </div>
+                    
                     <div>
-                        <p class="text-center text-white">BELUM PUNYA AKUN? <a href="/register-siswa" class="">SIGNUP!</a></p>
+                        <p class="text-center text-white w-[472px]">BELUM PUNYA AKUN? <a href="/register-siswa" class="font-bold underline">SIGNUP!</a></p>
                     </div>
-                </div>
+                </form>
 
 
             </div>
