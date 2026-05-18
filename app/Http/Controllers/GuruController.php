@@ -204,4 +204,14 @@ class GuruController extends Controller
 
         return redirect('/login-guru');
     }
+
+    public function bookingLes($id)
+    {
+        $guru = Guru::with('user')->findOrFail($id);
+
+        return view(
+            'Landing.bookingLes',
+            compact('guru')
+        );
+    }
 };

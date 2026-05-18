@@ -114,11 +114,13 @@
                         </p>
 
                         <!-- BUTTON -->
-                        <button class="w-full bg-yellow-400 text-purple-900 font-bold py-3 rounded-xl mt-6">
+                        <a
+                            href="/booking-les/{{ $guru->id }}"
+                            class="w-full bg-yellow-400 text-purple-900 font-bold py-3 rounded-xl mt-6 flex items-center justify-center">
 
                             RESERVASI
 
-                        </button>
+                        </a>
 
                         <button class="w-full bg-purple-900 text-white font-bold py-3 rounded-xl mt-4">
 

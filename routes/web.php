@@ -124,3 +124,6 @@ Route::get('/dashboard-siswa', function () {
     return view('Landing.landingSiswa');
 
 })->middleware('role:siswa');
+
+// detail-guru to booking-les
+Route::get('/booking-les/{id}', [GuruController::class, 'bookingLes']);
