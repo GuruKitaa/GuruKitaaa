@@ -85,6 +85,19 @@ Route::get('/chat', function () {
     return view('Landing.chat');
 });
 
+Route::get('/materi-tugas', function () {
+    return view('Landing.materiTugas');
+});
+
+Route::get('/detail-murid', function () {
+    return view('Landing.detailMurid');
+});
+
+Route::get('/tarik-saldo', function () {
+    return view('Landing.tarikSaldo');
+});
+
+
 Route::get('/login-siswa        ', [SiswaController::class, 'index']);
 Route::get('/register-siswa', [SiswaController::class, 'register']);
 Route::get('/login-guru', [GuruController::class, 'index']);

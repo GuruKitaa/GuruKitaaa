@@ -50,10 +50,11 @@
 
                 <!-- User Profile -->
                 @auth
-                <div class="flex items-center space-x-2 bg-gray-100 rounded-full pl-1 pr-4 py-1 cursor-pointer hover:bg-gray-200 transition-all duration-200">
+                <a href="/detail-murid" class="flex items-center space-x-2 bg-gray-100 rounded-full pl-1 pr-4 py-1 cursor-pointer hover:bg-gray-200 transition-all duration-200">
                     <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=333&color=fff" class="w-9 h-9 rounded-full shadow-sm">
                     <span class="text-sm font-semibold text-[#2D2D2D]">{{ Auth::user()->name }}</span>
-                </div>
+                </a>
+
                 <form action="{{ route('logout') }}" method="POST" class="inline ml-2">
                     @csrf
                     <button type="submit" class="text-xs font-bold text-red-500 hover:text-red-700">LOGOUT</button>

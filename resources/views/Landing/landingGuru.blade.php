@@ -236,9 +236,9 @@
                             </div>
                         </div>
 
-                        <button class="w-full bg-[#FFC007] text-[#45069A] font-bold py-3 rounded-xl hover:bg-yellow-400 transition-colors duration-200 shadow-lg shadow-yellow-500/20 text-sm">
+                        <a href="/tarik-saldo" class="block w-full bg-[#FFC007] text-[#45069A] font-bold py-3 rounded-xl hover:bg-yellow-400 text-center transition-colors duration-200 shadow-lg shadow-yellow-500/20 text-sm">
                             Tarik Saldo
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

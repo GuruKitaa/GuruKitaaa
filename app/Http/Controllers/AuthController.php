@@ -12,23 +12,18 @@ use App\Models\Guru;
 
 class AuthController extends Controller
 {
-    /**
-     * Proses Login untuk Guru maupun Siswa
-     */
+
     public function loginProcess(Request $request)
     {
-        // 1. Validasi input
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        // 2. Coba autentikasi
         if (Auth::attempt($credentials)) {
-            // Regenerate session untuk menghindari fixation attack
             $request->session()->regenerate();
 
-            // 3. Cek role untuk menentukan arah redirect
+
             if (Auth::user()->isGuru()) {
                 return redirect()->intended('/guru'); // Dashboard Guru
             } elseif (Auth::user()->isSiswa()) {
@@ -38,15 +33,13 @@ class AuthController extends Controller
             return redirect()->intended('/');
         }
 
-        // 4. Jika gagal, kembalikan dengan pesan error
+
         return back()->withErrors([
             'email' => 'Email atau password yang Anda masukkan salah.',
         ])->onlyInput('email');
     }
 
-    /**
-     * Proses Registrasi Siswa
-     */
+
     public function registerSiswaProcess(Request $request)
     {
         $request->validate([
@@ -57,7 +50,6 @@ class AuthController extends Controller
 
         DB::beginTransaction();
         try {
-            // 1. Buat User baru dengan role siswa
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -65,17 +57,13 @@ class AuthController extends Controller
                 'role' => 'siswa',
             ]);
 
-            // 2. Buat relasi Profil Siswa
             Siswa::create([
                 'user_id' => $user->id,
             ]);
 
             DB::commit();
-
-            // 3. Auto Login setelah daftar
             Auth::login($user);
 
-            // 4. Redirect ke halaman siswa
             return redirect('/siswa')->with('success', 'Registrasi Siswa Berhasil!');
         } catch (\Exception $e) {
             DB::rollBack();
@@ -83,9 +71,7 @@ class AuthController extends Controller
         }
     }
 
-    /**
-     * Proses Registrasi Guru
-     */
+
     public function registerGuruProcess(Request $request)
     {
         $request->validate([
@@ -97,7 +83,6 @@ class AuthController extends Controller
 
         DB::beginTransaction();
         try {
-            // 1. Buat User baru dengan role guru
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -113,11 +98,8 @@ class AuthController extends Controller
             ]);
 
             DB::commit();
-
-            // 3. Auto Login setelah daftar
             Auth::login($user);
 
-            // 4. Redirect ke halaman guru
             return redirect('/guru')->with('success', 'Registrasi Guru Berhasil!');
         } catch (\Exception $e) {
             DB::rollBack();
@@ -125,14 +107,10 @@ class AuthController extends Controller
         }
     }
 
-    /**
-     * Proses Logout
-     */
+
     public function logout(Request $request)
     {
         Auth::logout();
-
-        // Hapus dan reset session
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
