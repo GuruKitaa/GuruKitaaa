@@ -18,11 +18,15 @@ class Guru extends Model
         'keahlian',
         'rating_avg',
         'saldo',
+        'harga_les',
+        'telepon',
+        'rekening',
     ];
 
     protected $casts = [
         'rating_avg' => 'float',
         'saldo'      => 'decimal:2',
+        'harga_les' => 'decimal:2',
     ];
 
     /* ------------------------------------------------------------------ */

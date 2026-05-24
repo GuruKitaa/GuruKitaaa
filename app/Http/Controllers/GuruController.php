@@ -214,4 +214,93 @@ class GuruController extends Controller
             compact('guru')
         );
     }
+
+    public function dashboardGuru()
+    {
+        $guru = Guru::with('user')
+            ->where('user_id', auth()->id())
+            ->first();
+
+        return view(
+            'Landing.landingGuru',
+            compact('guru')
+        );
+    }
+
+    public function settingsGuru()
+    {
+        $guru = Guru::with('user')
+            ->where('user_id', auth()->id())
+            ->first();
+
+        return view(
+            'Landing.pengaturanGuru',
+            compact('guru')
+        );
+    }
+
+    public function updateSettingsGuru(Request $request)
+    {
+        $request->validate([
+
+            'name' => 'required',
+
+            'keahlian' => 'required',
+
+            'bio' => 'required',
+
+            'telepon' => 'nullable',
+
+            'rekening' => 'nullable',
+
+            'harga_les' => 'required|numeric',
+
+        ]);
+
+        $guru = Guru::where(
+            'user_id',
+            auth()->id()
+        )->first();
+
+        // UPDATE USERS TABLE
+        $guru->user->update([
+
+            'name' => $request->name,
+
+        ]);
+
+        // UPLOAD FOTO PROFILE
+        if ($request->hasFile('foto')) {
+
+            $fotoPath = $request->file('foto')
+                ->store('foto-profile', 'public');
+
+            $guru->user->foto = $fotoPath;
+
+            $guru->user->save();
+
+        }
+
+        // UPDATE GURUS TABLE
+        $guru->update([
+
+            'keahlian' => $request->keahlian,
+
+            'bio' => $request->bio,
+
+            'telepon' => $request->telepon,
+
+            'rekening' => $request->rekening,
+
+            'harga_les' => $request->harga_les,
+
+            'saldo' => $request->saldo,
+
+        ]);
+
+        return back()->with(
+            'success',
+            'Profile berhasil diperbarui!'
+        );
+    }
 };

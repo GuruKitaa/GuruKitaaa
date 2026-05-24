@@ -44,7 +44,7 @@
 
                 <div class="max-w-7xl mx-auto relative z-10">
                     <h1 class="text-white font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight leading-tight italic">
-                        Selamat Datang, Azizi!
+                        Selamat Datang, {{ $guru->user->name }} !
                     </h1>
                     <p class="text-purple-100/80 font-medium mt-2 text-sm sm:text-base max-w-2xl">
                         Berikut ringkasan aktivitasmu hari ini
@@ -236,9 +236,9 @@
                             </div>
                         </div>
 
-                        <button class="w-full bg-[#FFC007] text-[#45069A] font-bold py-3 rounded-xl hover:bg-yellow-400 transition-colors duration-200 shadow-lg shadow-yellow-500/20 text-sm">
+                        <a href="/tarik-saldo" class="block w-full bg-[#FFC007] text-[#45069A] font-bold py-3 rounded-xl hover:bg-yellow-400 text-center transition-colors duration-200 shadow-lg shadow-yellow-500/20 text-sm">
                             Tarik Saldo
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

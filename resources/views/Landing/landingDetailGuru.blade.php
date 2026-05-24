@@ -28,8 +28,10 @@
                     <div class="bg-purple-500 rounded-2xl p-4 flex items-center justify-center">
 
                         <img
-                            src="https://placehold.co/327x522"
-                            class="w-48 md:w-60 rounded-xl"
+                            src="{{ $guru->user->foto 
+                                ? asset('storage/' . $guru->user->foto)
+                                : asset('images/Teacher.png') }}"
+                            class="w-full h-full object-cover"
                         >
 
                     </div>

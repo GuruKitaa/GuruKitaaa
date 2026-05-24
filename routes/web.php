@@ -3,6 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\AuthController;
+
+// Authentication Routes
+Route::post('/login', [AuthController::class, 'loginProcess'])->name('login');
+Route::post('/register/siswa', [AuthController::class, 'registerSiswaProcess'])->name('register.siswa');
+Route::post('/register/guru', [AuthController::class, 'registerGuruProcess'])->name('register.guru');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Tambahkan ini
 Route::get('/gurus', [GuruController::class, 'index']);
@@ -14,13 +21,13 @@ Route::get('/choose', function() {
     return view('Landing.choose');
 });
 
-Route::get('/guru', function() {
-    return view('Landing.landingGuru');
-});
+// Route::get('/guru', function() {
+//     return view('Landing.landingGuru');
+// });
 
-Route::get('/siswa', function() {
-    return view('Landing.landingSiswa');
-});
+// Route::get('/siswa', function() {
+//     return view('Landing.landingSiswa');
+// });
 
 // Route::get('/detail-guru', function () {
 //     return view('Landing.landingdetailGuru');
@@ -30,17 +37,21 @@ Route::get('/siswa', function() {
 //     return view('Landing.landingSiswaCariGuru');
 // });
 
-Route::get('/booking-les', function () {
-    return view('Landing.bookingLes');
-});
+// FLOW BOOKING > CHECKOUT
 
-Route::get('/checkout-pembayaran', function () {
-    return view('Landing.checkoutPembayaran');
-});
+Route::get(
+    '/checkout-pembayaran/{id}',
+    [SiswaController::class, 'checkoutPembayaran']
+)->middleware('role:siswa');
 
-Route::get('/selesai-pembayaran', function () {
-    return view('Landing.selesaiPembayaran');
-});
+// FLOW CHECKOUT > SELESAI
+
+Route::get(
+    '/selesai-pembayaran/{id}',
+    [SiswaController::class, 'selesaiPembayaran']
+)->middleware('role:siswa');
+
+// ================================================
 
 Route::get('/daftar-kelas', function () {
     return view('Landing.daftarKelas');
@@ -78,16 +89,33 @@ Route::get('/chat', function () {
     return view('Landing.chat');
 });
 
+Route::get('/materi-tugas', function () {
+    return view('Landing.materiTugas');
+});
 
-// ==============================
-// LOGIN SISWA
-// ==============================
+Route::get('/detail-murid', function () {
+    return view('Landing.detailMurid');
+});
+
+Route::get('/tarik-saldo', function () {
+    return view('Landing.tarikSaldo');
+});
+
+Route::get('/notifikasi', function () {
+    return view('Landing.notifikasi');
+});
+
+Route::get(
+    '/pengaturan-guru',
+    [GuruController::class, 'settingsGuru']
+)->middleware('role:guru');
+
+Route::post(
+    '/pengaturan-guru',
+    [GuruController::class, 'updateSettingsGuru']
+)->middleware('role:guru');
+
 Route::get('/login-siswa', [SiswaController::class, 'index']);
-Route::post('/login-siswa', [SiswaController::class, 'login']);
-
-// ==============================
-// REGISTER SISWA
-// ==============================
 Route::get('/register-siswa', [SiswaController::class, 'register']);
 Route::post('/register-siswa', [SiswaController::class, 'store']);
 
@@ -103,6 +131,18 @@ Route::post('/login-guru', [GuruController::class, 'login']);
 Route::get('/register-guru', [GuruController::class, 'register']);
 Route::post('/register-guru', [GuruController::class, 'store']);
 
+// ==============================
+// LOGIN SISWA
+// ==============================
+Route::get('/login-siswa', [SiswaController::class, 'index']);
+Route::post('/login-siswa', [SiswaController::class, 'login']);
+
+// ==============================
+// REGISTER SISWA
+// ==============================
+Route::get('/register-siswa', [SiswaController::class, 'register']);
+Route::post('/register-siswa', [SiswaController::class, 'store']);
+
 Route::get('/cari-guru', [GuruController::class, 'cariGuru']);
 
 // Landing detail-guru Dynamic
@@ -112,18 +152,16 @@ Route::get(
 );
 
 // MiddleWare
-Route::get('/dashboard-guru', function () {
+Route::get(
+    '/dashboard-guru',
+    [GuruController::class, 'dashboardGuru']
+)->middleware('role:guru');
 
-    return view('Landing.landingGuru');
 
-})->middleware('role:guru');
-
-
-Route::get('/dashboard-siswa', function () {
-
-    return view('Landing.landingSiswa');
-
-})->middleware('role:siswa');
+Route::get(
+    '/dashboard-siswa',
+    [SiswaController::class, 'dashboardSiswa']
+)->middleware('role:siswa');
 
 // detail-guru to booking-les
 Route::get('/booking-les/{id}', [GuruController::class, 'bookingLes']);

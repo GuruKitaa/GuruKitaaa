@@ -131,55 +131,112 @@
 <div class="font-poppins bg-[#F3F4F6] min-h-screen">
     @include('layouts.guru.navbar.guru')
 
-    <!-- Hero Section - Teacher Profile -->
+   <!-- Hero Section - Teacher Profile -->
     <div class="relative overflow-hidden">
+
         <div class="bg-gradient-to-r from-[#5B21B6] via-[#7C3AED] to-[#A855F7] py-8 sm:py-10 px-4 sm:px-6 lg:px-8">
+
             <!-- Decorative blurred circles -->
             <div class="absolute top-[-40%] right-[-10%] w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+
             <div class="absolute bottom-[-30%] left-[-5%] w-72 h-72 bg-purple-300/10 rounded-full blur-3xl"></div>
 
             <div class="max-w-6xl mx-auto relative z-10">
+
                 <div class="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
+
                     <!-- Teacher Photo -->
                     <div class="w-32 h-40 sm:w-40 sm:h-48 md:w-48 md:h-56 flex-shrink-0 rounded-2xl overflow-hidden shadow-2xl shadow-purple-900/30 border-2 border-white/20">
-                        <img src="{{ asset('images/Teacher.png') }}" alt="Azizi Shafaa A." class="w-full h-full object-cover object-top" id="teacher-photo">
+
+                        <img
+                            src="{{ asset('images/Teacher.png') }}"
+                            alt="{{ $guru->user->name }}"
+                            class="w-full h-full object-cover object-top"
+                            id="teacher-photo"
+                        >
+
                     </div>
 
                     <!-- Teacher Info -->
                     <div class="text-white text-center md:text-left">
+
+                        <!-- NAMA -->
                         <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight italic">
-                            Azizi Shafaa A.
+
+                            {{ $guru->user->name }}
+
                         </h1>
+
                         <div class="mt-3 space-y-1.5">
+
+                            <!-- KEAHLIAN -->
                             <div class="flex items-center justify-center md:justify-start gap-2">
+
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-purple-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+
                                 </svg>
-                                <span class="text-sm text-purple-100">Guru Matematika</span>
+
+                                <span class="text-sm text-purple-100">
+
+                                    Guru {{ $guru->keahlian }}
+
+                                </span>
+
                             </div>
+
+                            <!-- MURID -->
                             <div class="flex items-center justify-center md:justify-start gap-2">
+
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-purple-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+
                                 </svg>
-                                <span class="text-sm text-purple-100">25 Murid Aktif</span>
+
+                                <span class="text-sm text-purple-100">
+
+                                    Rating {{ $guru->rating_avg }}
+
+                                </span>
+
                             </div>
+
+                            <!-- EMAIL -->
                             <div class="flex items-center justify-center md:justify-start gap-2">
+
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-purple-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+
                                 </svg>
-                                <span class="text-sm text-purple-100">Bahasa Indonesia</span>
+
+                                <span class="text-sm text-purple-100">
+
+                                    {{ $guru->user->email }}
+
+                                </span>
+
                             </div>
+
                         </div>
 
+                        <!-- BIO -->
                         <p class="mt-4 text-sm text-purple-100/80 max-w-xl leading-relaxed">
-                            Halo semuanya! Saya Azizi Shafaa Ashadel, guru matematika dengan pengalaman mengajar selama 3 tahun.
-                            Saya bersemangat dalam menjelaskan konsep matematika secara terstruktur dan memberikan
-                            dukungan kepada siswa dalam pengembangan kemampuan matematika mereka.
+
+                            {{ $guru->bio }}
+
                         </p>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </div>
 
     <!-- Main Content -->
@@ -272,7 +329,7 @@
                             <!-- Atas Nama -->
                             <div class="bank-info-row">
                                 <span class="text-sm text-gray-500 font-medium">Atas nama</span>
-                                <span class="text-sm font-bold text-gray-800" id="account-name">Raisha Syifa</span>
+                                <span class="text-sm font-bold text-gray-800" id="account-name"> {{ $guru->user->name }} </span>
                             </div>
                         </div>
 
@@ -283,7 +340,10 @@
                                 hover:from-[#6D28D9] hover:to-[#9333EA] transition-all duration-300
                                 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40
                                 active:scale-[0.98] text-sm sm:text-base">
-                                Konfirmasi Pembayaran
+                                <a href="/selesai-pembayaran/{{ $guru->id }}">
+                                    Konfirmasi Pembayaran
+                                </a>
+                                
                             </button>
                         </div>
                     </div>
@@ -306,7 +366,7 @@
                                 AS
                             </div>
                             <div class="flex-1 min-w-0">
-                                <p class="text-sm font-bold text-gray-900 truncate">Azizi Shafa A.</p>
+                                <p class="text-sm font-bold text-gray-900 truncate"> {{ $guru->user->name }} </p>
                                 <p class="text-xs text-gray-500">Guru Matematika</p>
                             </div>
                             <div class="flex items-center gap-1 flex-shrink-0">
@@ -447,7 +507,7 @@
         `;
 
         setTimeout(() => {
-            alert('Pembayaran berhasil dikonfirmasi! Menuju halaman selesai...');
+            // alert('Pembayaran berhasil dikonfirmasi! Menuju halaman selesai...');
             btn.disabled = false;
             btn.textContent = 'Konfirmasi Pembayaran';
         }, 2000);

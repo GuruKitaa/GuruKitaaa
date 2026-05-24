@@ -346,7 +346,11 @@
                             hover:from-[#6D28D9] hover:to-[#9333EA] transition-all duration-300
                             shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40
                             active:scale-[0.98] text-sm sm:text-base">
-                            Lanjut Pembayaran
+                            <a
+                                href="/checkout-pembayaran/{{ $guru->id }}"
+                            >
+                                Lanjut Pembayaran
+                            </a>
                         </button>
                     </form>
                 </div>
@@ -377,7 +381,7 @@
             return;
         }
         // Proceed to checkout
-        alert('Booking berhasil! Melanjutkan ke halaman checkout...');
+        // alert('Booking berhasil! Melanjutkan ke halaman checkout...');
     });
 </script>
 </body>

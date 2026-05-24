@@ -69,14 +69,16 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
         @foreach($gurus as $guru)
 
-    <div class="bg-purple-700 rounded-2xl p-6 flex flex-col md:flex-row gap-6 text-white">
+    <div class="bg-purple-700 rounded-2xl w-100 h-100 w-full h- full p-6 flex flex-col overflow-hidden md:flex-row gap-6 text-white object cover">
 
         <!-- FOTO -->
         <div class="bg-purple-500 rounded-2xl p-4 flex items-center justify-center">
 
             <img
-                src="https://placehold.co/327x522"
-                class="w-48 md:w-60 rounded-xl"
+                src="{{ $guru->user->foto 
+                    ? asset('storage/' . $guru->user->foto)
+                    : asset('images/Teacher.png') }}"
+                class="w-full h-full object-cover"
             >
 
         </div>

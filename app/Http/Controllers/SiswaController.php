@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Siswa;
+use App\Models\Guru;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -144,6 +145,18 @@ class SiswaController extends Controller
         return redirect('/dashboard-siswa');
     }
 
+    public function dashboardSiswa()
+    {
+        $siswa = Siswa::with('user')
+            ->where('user_id', auth()->id())
+            ->first();
+
+        return view(
+            'Landing.landingSiswa',
+            compact('siswa')
+        );
+    }
+
     // =====================================================
     // LOGOUT SISWA
     // =====================================================
@@ -157,5 +170,25 @@ class SiswaController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/login-siswa');
+    }
+
+    public function checkoutPembayaran($id)
+    {
+        $guru = Guru::with('user')->findOrFail($id);
+
+        return view(
+            'Landing.checkoutPembayaran',
+            compact('guru')
+        );
+    }
+
+    public function selesaiPembayaran($id)
+    {
+        $guru = Guru::with('user')->findOrFail($id);
+
+        return view(
+            'Landing.selesaiPembayaran',
+            compact('guru')
+        );
     }
 }

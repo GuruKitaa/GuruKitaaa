@@ -105,7 +105,7 @@
                         <img src="{{ asset('images/Teacher.png') }}" alt="Azizi Shafaa A." class="w-full h-full object-cover object-top" id="teacher-photo">
                     </div>
                     <div class="text-white text-center md:text-left">
-                        <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight italic">Azizi Shafaa A.</h1>
+                        <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight italic"> {{ $guru->user->name }} </h1>
                         <div class="mt-3 space-y-1.5">
                             <div class="flex items-center justify-center md:justify-start gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-purple-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
@@ -208,7 +208,7 @@
 
                         <!-- Action Buttons -->
                         <div class="mt-8 flex flex-col sm:flex-row gap-3">
-                            <a href="/" id="btn-back-home"
+                            <a href="/dashboard-siswa" id="btn-back-home"
                                 class="flex-1 text-center bg-gradient-to-r from-[#7C3AED] to-[#A855F7] text-white font-bold py-3.5 rounded-2xl
                                 hover:from-[#6D28D9] hover:to-[#9333EA] transition-all duration-300
                                 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40
